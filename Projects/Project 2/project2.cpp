@@ -43,6 +43,7 @@ int main(){
 	cout << ": ";
 	
 	cin >> menuSelect;
+	cin.ignore(100, '\n');
 	
 	switch(menuSelect){
 		case '0':	//new database
@@ -68,6 +69,7 @@ int main(){
 		cout << ": ";
 		
 		cin >> menuSelect;
+		cin.ignore(100, '\n');
 		
 		switch(menuSelect){
 			case '1':	//add
@@ -97,8 +99,8 @@ int main(){
 void addSong(Song library[MAX_ARRAY], int& count){
 	cout << endl;
 	
-	cin.clear();			//clear previous input stream
-	cin.ignore(100, '\n');
+	//cin.clear();			//clear previous input stream
+	//cin.ignore(100, '\n');
 	
 	cout << "Enter title: ";
 	cin.get(library[count].songTitle, MAX_CHAR, '\n');
@@ -162,14 +164,12 @@ void removeSong(Song library[MAX_ARRAY], int& count){
 		
 void searchArtist(Song library[MAX_ARRAY], int count){
 	char artist[MAX_CHAR];
-	
-	cin.clear();
-	cin.ignore(100, '\n');
-	
+
 	cout << "Enter artist: ";
 	cin.get(artist, MAX_CHAR, '\n');
 	cin.ignore(100, '\n');
 	
+	cout << endl;
 	cout << left;
 	cout << setw(5) << "Index" 
 		<< setw(20) << "Title" 
@@ -182,7 +182,7 @@ void searchArtist(Song library[MAX_ARRAY], int count){
 	
 	for(int x = 0; x < count; x++){
 		if(strcmp(artist, library[x].songArtist) == 0){
-			cout << setw(5) << x
+			cout << setw(5) << (x + 1)
 				<< setw(20) << library[x].songTitle
 				<< setw(20) << library[x].songArtist
 				<< setw(10) << library[x].songDuration
@@ -190,18 +190,17 @@ void searchArtist(Song library[MAX_ARRAY], int count){
 				<< endl;
 		}
 	}
+	cout << endl;
 }
 	
 void searchAlbum(Song library[MAX_ARRAY], int count){
 	char album[MAX_CHAR];
 	
-	cin.clear();
-	cin.ignore(100, '\n');
-	
 	cout << "Enter album: ";
 	cin.get(album, MAX_CHAR, '\n');
 	cin.ignore(100, '\n');
 	
+	cout << endl;
 	cout << left;
 	cout << setw(5) << "Index" 
 		<< setw(20) << "Title" 
@@ -214,7 +213,7 @@ void searchAlbum(Song library[MAX_ARRAY], int count){
 	
 	for(int x = 0; x < count; x++){
 		if(strcmp(album, library[x].albumTitle) == 0){
-			cout << setw(5) << x
+			cout << setw(5) << (x + 1)
 				<< setw(20) << library[x].songTitle
 				<< setw(20) << library[x].songArtist
 				<< setw(10) << library[x].songDuration
@@ -222,11 +221,13 @@ void searchAlbum(Song library[MAX_ARRAY], int count){
 				<< endl;
 		}
 	}
+	cout << endl;
 }
 		
 void loadDatabase(char dbName[MAX_CHAR], Song library[MAX_ARRAY], int& count){	//load data into array from file input by user
 	cout << "Enter file name: ";
-	cin >> dbName;
+	cin.get(dbName, MAX_CHAR, '\n');
+	cin.ignore(100, '\n');
 	cout << endl;
 	
 	ifstream inFile;
@@ -236,7 +237,8 @@ void loadDatabase(char dbName[MAX_CHAR], Song library[MAX_ARRAY], int& count){	/
 	while(!inFile){	//return error if no file found
 		cout << "File not found" << endl;
 		cout << "Re-Enter file name: ";
-		cin >> dbName;
+		cin.get(dbName, MAX_CHAR, '\n');
+		cin.ignore(100, '\n');
 		inFile.open(dbName);
 	}
 	
@@ -264,9 +266,8 @@ void loadDatabase(char dbName[MAX_CHAR], Song library[MAX_ARRAY], int& count){	/
 void saveDatabase(char dbName[MAX_CHAR], Song library[MAX_ARRAY], int count){	//export array to file
 	if(dbName[0] == '\0'){		//enter new save file name if no file was loaded
 		cout << "Save file as: ";
-		cin.clear();
-		cin.ignore(100, '\n');
 		cin.get(dbName, 100, '\n');
+		cin.ignore(100, '\n');
 		while(!cin){
 			cin.clear();
 			cin.ignore(100, '\n');
@@ -274,6 +275,7 @@ void saveDatabase(char dbName[MAX_CHAR], Song library[MAX_ARRAY], int count){	//
 			cout << "No name entered" << endl 
 				<< "Enter valid name: ";
 			cin.get(dbName, 100, '\n');
+			cin.ignore(100, '\n');
 		}
 		dbName = strcat(dbName, ".txt");	//append .txt to end of name to create text file
 	}
