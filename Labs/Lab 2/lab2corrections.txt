@@ -1,0 +1,5 @@
+1. Added cstring header
+2. Added finalAvg after double
+3. Removed tabbed spacing
+4. Fixed spelling of determineGrade
+5. Fixed spelling of determineGrade
