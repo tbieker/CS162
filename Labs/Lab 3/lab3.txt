@@ -1,0 +1,41 @@
+Author: Tyler Bieker
+Assignment: Lab 3
+Date: 01/24/2016
+
+bool insert(int val, int intList[], int& size)
+{
+	//insert your code here and modify the following line
+	if(size == 0){			
+		intList[size] = val;
+		size++;
+		return true;
+	}
+	for(int x = 0; x < size; x++){
+		if(val == intList[x]){
+			break;		
+		}else if(val > intList[x]){
+			if(x == (size - 1)){	
+				intList[x + 1] = val;
+				size++;
+				return true;
+			}
+			continue;
+		}else if(val < intList[x]){			
+			for(int y = size; y > x; y--){	
+				intList[y] = intList[y - 1];
+			}
+			intList[x] = val;
+			size++;
+			return true;
+		}
+	}
+	return false;
+}
+
+
+[ ]
+
+[ 4 10 25 40 ]
+the list doesn't have 5
+
+[ 25 ]
