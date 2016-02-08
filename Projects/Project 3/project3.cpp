@@ -2,7 +2,7 @@
 //Class: Computer Science 162
 //Assignment: Project 3
 //Date: 02/03/2016
-//Sources:
+//Sources: www.cplusplus.com
 
 #include <iostream>
 #include "songlist.h"

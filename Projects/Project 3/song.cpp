@@ -19,23 +19,23 @@ void Song::add(char newTitle[MAX_CHAR], char newArtist[MAX_CHAR], char newDurati
 	strcpy(album, newAlbum);
 }
 
-bool Song::compare(int select, char info[MAX_CHAR]) const{
+bool Song::compare(int select, char compared[MAX_CHAR]) const{	//compare artist or album to provided string. Return true if strings are equal.
 	
 	//select options: 0 = artist, 1 = album
 	
-	if(select == 0){
-		if(strcmp(artist, info) == 0){	//if strings are the same, return true
-			return true;
-		}else{
-			return false;
-		}
-	}
-	if(select == 1){
-		if(strcmp(album, info) == 0){	//if strings are the same, return true
-			return true;
-		}else{
-			return false;
-		}
+	switch(select){
+		case 0:		//compare artist
+			if(strcmp(artist, compared) == 0){	//if strings are the same, return true
+				return true;
+			}else{
+				return false;
+			}
+		case 1:		//compare album
+			if(strcmp(album, compared) == 0){	//if strings are the same, return true
+				return true;
+			}else{
+				return false;
+			}
 	}
 }
 
@@ -48,7 +48,9 @@ void Song::print() const{
 		<< endl;
 }
 
-void Song::output(char outTitle[MAX_CHAR], char outArtist[MAX_CHAR], char outDuration[MAX_CHAR], char outAlbum[MAX_CHAR]){
+void Song::output(char outTitle[MAX_CHAR], char outArtist[MAX_CHAR], char outDuration[MAX_CHAR], char outAlbum[MAX_CHAR]) const{
+	//return title, artist, duration and album for output to savefile
+	
 	strcpy(outTitle, title);
 	strcpy(outArtist, artist);
 	strcpy(outDuration, duration);

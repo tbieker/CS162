@@ -12,7 +12,7 @@ class Song{
 	public:
 		Song();
 		void add(char newTitle[MAX_CHAR], char newArtist[MAX_CHAR], char newDuration[MAX_CHAR], char newAlbum[MAX_CHAR]);
-		bool compare(int select, char info[MAX_CHAR]) const;
-		void output(char outTitle[MAX_CHAR], char outArtist[MAX_CHAR], char outDuration[MAX_CHAR], char outAlbum[MAX_CHAR]);
+		bool compare(int select, char compared[MAX_CHAR]) const;
+		void output(char outTitle[MAX_CHAR], char outArtist[MAX_CHAR], char outDuration[MAX_CHAR], char outAlbum[MAX_CHAR]) const;
 		void print() const;
 };

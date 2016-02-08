@@ -6,12 +6,11 @@
 
 using namespace std;
 
-SongList::SongList(){
+SongList::SongList(){	//Initialize songlist counter to zero
 	counter = 0;
 }
 
 void SongList::add(){
-	char title[MAX_CHAR], artist[MAX_CHAR], duration[MAX_CHAR], album[MAX_CHAR];
 	
 	cout << endl;
 	cout << "Enter title: ";
@@ -65,7 +64,6 @@ void SongList::display(){
 }
 
 void SongList::searchArtist(){
-	char artist[MAX_CHAR];
 
 	cout << "Enter artist: ";
 	cin.get(artist, MAX_CHAR, '\n');
@@ -83,7 +81,6 @@ void SongList::searchArtist(){
 }
 
 void SongList::searchAlbum(){
-	char album[MAX_CHAR];
 	
 	cout << "Enter album: ";
 	cin.get(album, MAX_CHAR, '\n');
@@ -120,11 +117,6 @@ void SongList::load(){
 	}
 	
 	char input = inFile.peek();	//check for End Of Function
-	
-	char title[MAX_CHAR];
-	char artist[MAX_CHAR];
-	char duration[MAX_CHAR];
-	char album[MAX_CHAR];	
 	
 	while(input != EOF){
 		inFile.get(title, MAX_CHAR, ';');
@@ -164,12 +156,7 @@ void SongList::save(){
 	}
 	
 	ofstream outFile;
-	outFile.open(name);
-	
-	char title[MAX_CHAR];
-	char artist[MAX_CHAR];
-	char duration[MAX_CHAR];
-	char album[MAX_CHAR];	
+	outFile.open(name);	
 	
 	for(int x = 0; x < counter; x++){	//output Song array to file in title;artist;duration;album format
 		songs[x].output(title, artist, duration, album);

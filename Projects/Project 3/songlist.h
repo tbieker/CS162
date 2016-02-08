@@ -7,10 +7,14 @@ class SongList{
 	private:
 		const static int MAX_CHAR = 100;
 		const static int MAX_ARRAY = 1000;		//max number of songs to store in array
-		char name[MAX_CHAR] = {'\0'};
-		int counter;	//counter for number of songs in array
-		Song songs[MAX_ARRAY];
-		void heading();	//heading for displaying songs
+		char name[MAX_CHAR] = {'\0'};			//name of file saved or to be saved
+		int counter;						//counter for number of songs in array
+		char title[MAX_CHAR];
+		char artist[MAX_CHAR];
+		char duration[MAX_CHAR];
+		char album[MAX_CHAR];
+		Song songs[MAX_ARRAY];				
+		void heading();					//heading for displaying songs
 	public:
 		SongList();
 		void add();			//add song to list
